@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addTodoItem } from './actions';
+import uuid from 'uuid';
 
 class App extends Component {
   render() {
@@ -11,9 +12,9 @@ class App extends Component {
         <div>
           { todos && todos.length > 0 ? (
             <ul>
-              { todos.map((todo, i) => (
-                <li key={i}>
-                  {todo}
+              { todos.map(todo => (
+                <li key={todo.id}>
+                  {todo.text}
                 </li>))
               }
             </ul>
@@ -42,7 +43,7 @@ const mapDispatchToProps = dispatch => {
     onAddItem: e => {
       e.preventDefault();
 
-      const item = e.target.item.value.trim();
+      const item = { id: uuid(), text:e.target.item.value.trim() };
       dispatch(addTodoItem(item));
 
       e.target.item.value = '';

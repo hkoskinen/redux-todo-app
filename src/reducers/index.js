@@ -3,11 +3,15 @@ import {
   REMOVE_TODO_ITEM,
   DONE_TODO_ITEM
 } from '../actions';
-
+import uuid from 'uuid';
 
 const initialState = {
   title: 'Redux Todo App',
-  todos: ['Read more books', 'Get the groceries', 'Write more JavaScript']
+  todos: [
+    { id: uuid(), text:'Read more books' },
+    { id: uuid(), text:'Get the groceries' },
+    { id: uuid(), text:'Write more JavaScript' }
+  ]
 };
 
 const rootReducer = (state = initialState, action) => {
