@@ -10,10 +10,10 @@ export const addTodoItem = item => {
   };
 };
 
-export const removeTodoItem = item => {
+export const removeTodoItem = id => {
   return {
     type: REMOVE_TODO_ITEM,
-    item
+    id: id.id
   };
 };
 

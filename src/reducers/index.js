@@ -15,8 +15,8 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
-
     case ADD_TODO_ITEM:
       return {
         ...state,
@@ -26,12 +26,11 @@ const rootReducer = (state = initialState, action) => {
     case REMOVE_TODO_ITEM:
       return {
         ...state,
-        todos: state.todos.filter(todo => todo.id !== action.item.id)
+        todos: state.todos.filter(todo => todo.id !== action.id)
       };
 
     default:
       return state;
-
   }
 };
 
