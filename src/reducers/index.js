@@ -23,6 +23,12 @@ const rootReducer = (state = initialState, action) => {
         todos: [ ...state.todos, action.item ]
       };
 
+    case REMOVE_TODO_ITEM:
+      return {
+        ...state,
+        todos: state.todos.filter(todo => todo.id !== action.item.id)
+      };
+
     default:
       return state;
 

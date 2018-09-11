@@ -10,7 +10,7 @@ export const addTodoItem = item => {
   };
 };
 
-const removeTodoItem = item => {
+export const removeTodoItem = item => {
   return {
     type: REMOVE_TODO_ITEM,
     item

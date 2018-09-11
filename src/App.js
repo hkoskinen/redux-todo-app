@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTodoItem } from './actions';
+import { addTodoItem, removeTodoItem } from './actions';
 import uuid from 'uuid';
 
 class App extends Component {
@@ -14,7 +14,7 @@ class App extends Component {
             <ul>
               { todos.map(todo => (
                 <li key={todo.id}>
-                  {todo.text}
+                  {todo.text} <button onClick={() => this.props.onDeleteItem(todo)}>remove</button>
                 </li>))
               }
             </ul>
@@ -47,6 +47,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(addTodoItem(item));
 
       e.target.item.value = '';
+    },
+    onDeleteItem: todo => {
+      dispatch(removeTodoItem(todo));
     }
   }
 };
