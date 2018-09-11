@@ -6,10 +6,43 @@ import registerServiceWorker from './registerServiceWorker';
 
 import { Provider } from 'react-redux';
 import store from './store';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from './components/Header';
+
+
+const About = () => (
+  <div>
+    <h1>about</h1>
+  </div>
+);
+
+const Dashboard = () => (
+  <div>
+    <h1>dashboard</h1>
+  </div>
+);
+
+const NotFoundPage = ({location}) => (
+  <div style={{ textAlign: 'center', margin: 'auto' }}>
+    <h1>404</h1>
+    <p>Path {location.pathname} not found</p>
+  </div>
+);
 
 render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <div>
+        <Header />
+
+        <Switch>
+          <Route path="/" component={App} exact />
+          <Route path="/about" component={About} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </div>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

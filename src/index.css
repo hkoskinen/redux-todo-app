@@ -8,3 +8,7 @@ body {
 .done {
   color: #ccc;
 }
+
+.active {
+  font-weight: bold;
+}
