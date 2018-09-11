@@ -1,6 +1,7 @@
 export const ADD_TODO_ITEM = 'ADD_TODO_ITEM';
 export const REMOVE_TODO_ITEM = 'REMOVE_TODO_ITEM';
 export const DONE_TODO_ITEM = 'DONE_TODO_ITEM';
+export const CHANGE_TODO_ITEM_DONE = 'CHANGE_TODO_ITEM_DONE';
 
 // action creators
 export const addTodoItem = item => {
@@ -17,9 +18,9 @@ export const removeTodoItem = id => {
   };
 };
 
-const doneTodoItem = item => {
+export const changeTodoItemDone = id => {
   return {
-    type: DONE_TODO_ITEM,
-    item
+    type: CHANGE_TODO_ITEM_DONE,
+    id: id.id
   };
 };

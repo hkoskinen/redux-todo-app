@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
     onAddItem: e => {
       e.preventDefault();
 
-      const item = { id: uuid(), text:e.target.item.value.trim() };
+      const item = { id: uuid(), text: e.target.item.value.trim(), done: false };
       dispatch(addTodoItem(item));
 
       e.target.item.value = '';
