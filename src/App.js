@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addTodoItem } from './actions';
 
 class App extends Component {
   render() {
-    console.log(this.props);
     const { title, todos } = this.props;
     return (
       <div>
@@ -19,6 +19,12 @@ class App extends Component {
             </ul>
           ) : <p>You don't have any todo items.</p>}
         </div>
+        <div>
+          <form onSubmit={this.props.onAddItem}>
+              <input type="text" name="item" />
+              <button type="submit">add</button>
+          </form>
+        </div>
       </div>
     );
   }
@@ -32,9 +38,17 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  // what actions the component can have to change the store aka application state
+  return {
+    onAddItem: e => {
+      e.preventDefault();
 
+      const item = e.target.item.value.trim();
+      dispatch(addTodoItem(item));
+
+      e.target.item.value = '';
+    }
+  }
 };
 
 // connect our App component into the redux store
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
