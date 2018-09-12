@@ -11,14 +11,22 @@ class Login extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-
-    axios.post('http://localhost:64000/login', {
+    console.log(process.env);
+/*
+    axios.post(`${process.env.REACT_APP_REST_API}/register`, {
       username: this.state.username,
       password: this.state.password
-    }, {
+    })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+*/
+axios.get(`${process.env.REACT_APP_REST_API}/dashboard`,  {
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer fasfasfasf`
+        'Authorization': 'Bearer thiswillbereceivedfromtheapi'
       }
     })
     .then(res => {
