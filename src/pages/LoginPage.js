@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+import { Grid, Header, Form, Segment, Button } from 'semantic-ui-react';
 
 class Login extends React.Component {
 
@@ -39,28 +39,26 @@ axios.get(`${process.env.REACT_APP_REST_API}/dashboard`,  {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <p><label>username:
-          <input type="text" name="username"
-            value={this.state.username}
-            onChange={(e) => this.setState({username: e.target.value})} />
-        </label></p>
-        <p><label>password:
-          <input type="password" name="password"
-            value={this.state.password}
-            onChange={(e) => this.setState({password: e.target.value})} />
-        </label></p>
-        <p><button type="submit">Log In</button></p>
-      </form>
+      <div>
+        <Grid textAlign='center'>
+          <Grid.Column style={{ maxWidth: 460 }}>
+            <Header size='large'>
+              Log-in to your account
+            </Header>
+            <Form size='large'>
+              <Segment stacked>
+                <Form.Input fluid icon='user' iconPosition='left' placeholder='username' />
+                <Form.Input fluid icon='lock' iconPosition='left' type='password' placeholder='password' />
+                <Button color='blue' fluid size='large'>Login</Button>
+              </Segment>
+            </Form>
+          </Grid.Column>
+        </Grid>
+      </div>
     );
   }
 }
 
-const LoginPage = () => (
-  <div>
-    <h1>Log In</h1>
-    <Login />
-  </div>
-);
+const LoginPage = () => (<Login />);
 
 export default LoginPage;

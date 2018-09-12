@@ -1,29 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
-import 'semantic-ui-css/semantic.min.css';
-import './index.css';
-import App from './App';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import store from './store';
 import registerServiceWorker from './registerServiceWorker';
 
-import { Provider } from 'react-redux';
-import store from './store';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
+import 'semantic-ui-css/semantic.min.css';
+import './index.css';
+
+import PageHeader from './components/PageHeader';
 import HomePage from './pages/HomePage';
+import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
-
-
-const About = () => (
-  <div>
-    <h1>about</h1>
-  </div>
-);
-
-const Dashboard = () => (
-  <div>
-    <h1>dashboard</h1>
-  </div>
-);
+import PreferencesPage from './pages/PreferencesPage';
+import DashboardPage from './pages/DashboardPage';
 
 const NotFoundPage = ({location}) => (
   <div style={{ textAlign: 'center', margin: 'auto' }}>
@@ -39,13 +29,14 @@ render(
   <Provider store={store}>
     <Router>
       <div>
-        <Header />
+        <PageHeader />
 
         <Switch>
           <Route path="/" component={HomePage} exact />
           <Route path="/login" component={LoginPage} />
-          <Route path="/about" component={About} />
-          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/dashboard" component={DashboardPage} />
+          <Route path="/preferences" component={PreferencesPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>
