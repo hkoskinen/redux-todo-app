@@ -15,13 +15,25 @@ import {
 const HomePage = () => {
   return (
     <div>
-      <Container textAlign='center'>
-        <List horizontal divided link>
-          <List.Item as='a' href="#">site map</List.Item>
-          <List.Item as='a' href="#">contact us</List.Item>
-          <List.Item as='a' href="#">terms and conditions</List.Item>
-          <List.Item as='a' href="#">privacy policy</List.Item>
-        </List>
+      <Container text textAlign='center'>
+        <Header
+          as='h1'
+          content='Your favorite notebook app'
+          style={{
+            fontSize: '3em',
+            fontWeight: 'normal',
+            marginTop:'2em'
+          }}
+        />
+        <Header
+          as='h2'
+          content='Remember anything, anywhere, anytime.'
+          style={{
+            fontSize: '1.5em',
+            fontWeight: 'normal'
+          }}
+        />
+        <Button primary size='huge'>Sign Up</Button>
       </Container>
     </div>
   );
